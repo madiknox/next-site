@@ -93,7 +93,7 @@ const Lesson = ({ course, lesson, selected, meta }) => {
       }).visited
   );
   const totalSteps = steps.length;
-  const finished = totalSteps && finishedSteps.length === totalSteps;
+  const finished = totalSteps && finishedSteps.length === totalSteps && !selected;
 
   return (
     <Step
