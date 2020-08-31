@@ -12,7 +12,7 @@ import ArrowIcon from '../icons/arrow-right';
 
 const Step: React.FC<{
   href: string;
-  children: string;
+  children: [];
   selected: boolean;
   finished: boolean;
   title: string;
@@ -88,7 +88,12 @@ const Step: React.FC<{
   );
 };
 
-const Lesson = ({ course, lesson, selected, meta }) => {
+const Lesson: React.FC<{
+  course: object;
+  lesson: object;
+  selected: boolean;
+  meta: object;
+}> = ({ course, lesson, selected, meta }) => {
   const getRecord = useGetRecord();
   const href = `/learn/${course.id}/${lesson.id}`;
   const steps = lesson.steps || [];
@@ -139,7 +144,7 @@ const Lesson = ({ course, lesson, selected, meta }) => {
   );
 };
 
-const Course = ({ course, meta }) => (
+const Course: React.FC<{ course: object; meta: object }> = ({ course, meta }) => (
   <div className="course" key={course.id}>
     <h3 className="f6 fw6">{course.name}</h3>
     <ul>
@@ -184,7 +189,7 @@ const Course = ({ course, meta }) => (
   </div>
 );
 
-const Navigation = ({ meta, isMobile }) => {
+const Navigation: React.FC<{ meta: object; isMobile: boolean }> = ({ meta, isMobile }) => {
   const [dropdown, setDropdown] = React.useState(false);
   const [record, dispatchRecord] = useRecord(meta);
   const effectDeps = [record.ready, !record.visited];
