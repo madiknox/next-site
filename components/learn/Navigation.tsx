@@ -10,7 +10,15 @@ import Profile from './Profile';
 import CheckIcon from '../icons/check';
 import ArrowIcon from '../icons/arrow-right';
 
-const Step = ({ href, children, selected, finished, title, label, checkMark }) => {
+const Step: React.FC<{
+  href: string;
+  children: string;
+  selected: boolean;
+  finished: boolean;
+  title: string;
+  label: string;
+  checkMark: React.ReactNode;
+}> = ({ href, children, selected, finished, title, label, checkMark }) => {
   const finishedClassName = checkMark ? 'check-mark' : 'blue-dot';
 
   return (
@@ -93,7 +101,8 @@ const Lesson = ({ course, lesson, selected, meta }) => {
       }).visited
   );
   const totalSteps = steps.length;
-  const finished = totalSteps && finishedSteps.length === totalSteps && !selected;
+
+  const finished = totalSteps && finishedSteps.length === totalSteps;
 
   return (
     <Step
