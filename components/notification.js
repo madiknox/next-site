@@ -1,48 +1,72 @@
-import { ellipsis } from 'polished';
+import Link from 'next/link';
 import Container from './container';
 import withPure from './hoc/pure';
 
-export default withPure(({ href, title, titleMobile, children }) => (
-  <div className="notification f6" title={title}>
+export default withPure(({ href, children }) => (
+  <div className="f6">
     <style jsx>
       {`
         .notification {
-          width: 100%;
-          height: 50px;
-          text-align: center;
-          background: #fafafa;
-          border-bottom: 1px solid #eaeaea;
-          display: flex;
-          align-items: center;
-          justify-content: space-around;
+          display: inline-flex;
+          margin-top: 20px;
+          margin-left: -10px;
+          margin-right: -10px;
+          background: var(--accents-1);
+          border: 2px solid var(--accents-2);
+          border-radius: 8px;
+          padding: 5px 10px 10px;
+          text-align: left;
         }
-        a {
-          color: #6a6a6a;
+        a,
+        a:hover {
+          color: inherit;
           font-size: 0.875rem;
         }
         :global(.highlight) {
-          margin: 0 1rem;
-          color: #0070f3;
-          transition: opacity 200ms ease;
+          font-weight: bold;
+          transition: color 200ms ease;
         }
         a:hover :global(.highlight) {
-          opacity: 0.8;
+          color: var(--geist-success);
+        }
+
+        .new {
+          background: linear-gradient(90deg, #ed6292 25%, #ed5760 87.5%);
+          border-radius: 5px;
+          color: #fff;
+          padding: 1px 8px;
+          font-weight: bold;
+          font-size: 0.9em;
+          display: inline-flex;
+          margin-right: 5px;
+          text-transform: uppercase;
+        }
+
+        .br {
+          display: block;
+          margin-bottom: 10px;
+        }
+
+        @media screen and (min-width: 780px) {
+          .br {
+            display: none;
+          }
+
+          .notification {
+            padding-top: 10px;
+          }
         }
       `}
     </style>
-    <Container style={ellipsis()}>
-      {titleMobile ? (
-        <>
-          <a href={href} className="display-mobile">
-            {titleMobile}
+    <Container center>
+      <div className="notification">
+        <Link href={href}>
+          <a>
+            <span className="new">New</span>
+            <div className="br" /> {children}
           </a>
-          <a href={href} className="hide-mobile">
-            {children}
-          </a>
-        </>
-      ) : (
-        <a href={href}>{children}</a>
-      )}
+        </Link>
+      </div>
     </Container>
   </div>
 ));

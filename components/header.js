@@ -4,7 +4,7 @@ import cn from 'classnames';
 import Banner from './banner';
 import Nav from './navbar';
 
-const Header = ({ sticky = true }) => {
+const Header = ({ sticky = true, hideHeaderBorder = false }) => {
   return (
     <>
       <Banner />
@@ -22,7 +22,7 @@ const Header = ({ sticky = true }) => {
           width: 100%;
           background: #fff;
           z-index: 1000;
-          border-bottom: 1px solid #eaeaea;
+          ${hideHeaderBorder ? '' : 'border-bottom: 1px solid #eaeaea;'}
         }
         header.sticky {
           position: sticky;

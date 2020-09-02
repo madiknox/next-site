@@ -118,6 +118,7 @@ export default function Features() {
           {features.map(({ title, body, url }) => {
             const card = (
               <div
+                key={title}
                 className={cn(styles.card, {
                   [styles.clickable]: cardClickable
                 })}
@@ -132,7 +133,7 @@ export default function Features() {
               </div>
             );
             return cardClickable ? (
-              <Link as={url} href="/docs/[[...slug]]">
+              <Link key={title} as={url} href="/docs/[[...slug]]">
                 {card}
               </Link>
             ) : (

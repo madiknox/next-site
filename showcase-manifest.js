@@ -647,7 +647,7 @@ export const mapping = {
   },
   [PLATFORM_LOWERCASE]: {
     title: PLATFORM_NAME,
-    link: `${PLATFORM_URL}?utm_source=next-site&utm_medium=showcase&utm_campaign=next-website`,
+    link: `${PLATFORM_URL}/home?utm_source=next-site&utm_medium=showcase&utm_campaign=next-website`,
     src: '/static/images/showcases/showcases-09.jpg',
     srcFallback: true,
     alexa: 34585,

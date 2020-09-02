@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useAmp } from 'next/amp';
 import cn from 'classnames';
 import { SkipNavLink } from '@reach/skip-nav';
-
+import RainbowButton from './rainbow-button';
 import NextLogo from './logo';
 import Container from './container';
 import GitHubLogo from './icons/github';
@@ -31,10 +31,21 @@ function Navbar() {
             </a>
           </Link>
 
-          <div className="learn">
-            <Button href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website">
-              Learn
-            </Button>
+          <div className="mobile-top-right">
+            <div className="learn">
+              <Button href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website">
+                Learn
+              </Button>
+            </div>
+
+            <Link href="/conf?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=nav-cta">
+              <a className="conf">
+                <span className="conf-button">
+                  <RainbowButton idPrefix="mobile" />
+                </span>
+                <span className="conf-text">Next.js Conf</span>
+              </a>
+            </Link>
           </div>
         </div>
 
@@ -94,6 +105,21 @@ function Navbar() {
             <div className="no-feedback" />
           )}
 
+          <div className="learn">
+            <Button href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=nav-cta&utm_campaign=next-website">
+              Learn
+            </Button>
+          </div>
+
+          <Link href="/conf?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=nav-cta">
+            <a className="conf">
+              <span className="conf-button">
+                <RainbowButton idPrefix="desktop" />
+              </span>
+              <span className="conf-text">Next.js Conf</span>
+            </a>
+          </Link>
+
           <a
             href="https://github.com/vercel/next.js"
             aria-label="Next.js on GitHub"
@@ -103,12 +129,6 @@ function Navbar() {
           >
             <GitHubLogo color="currentColor" />
           </a>
-
-          <div className="learn">
-            <Button href="/learn/basics/create-nextjs-app?utm_source=next-site&utm_medium=homepage-cta&utm_campaign=next-website">
-              Learn
-            </Button>
-          </div>
         </div>
       </nav>
 
@@ -174,12 +194,17 @@ function Navbar() {
           width: 90px;
         }
 
+        a.icon.icon {
+          margin-left: 0;
+        }
+
         .learn :global(a) {
           background-color: rgba(0, 118, 255, 0.9);
           color: #fff;
           border: 1px solid rgba(0, 118, 255, 0.9);
           padding: 0.25rem 1rem;
           margin: 0;
+          font-weight: 500;
         }
         .learn :global(a:focus),
         .learn :global(a:hover) {
@@ -187,9 +212,40 @@ function Navbar() {
           color: rgba(0, 118, 255, 0.9);
         }
 
+        /* Can’t use !important, so increase specificity */
+        .conf.conf.conf {
+          position: relative;
+          width: 132px;
+          height: 36px;
+          margin: 0;
+        }
+
+        .conf-button {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 2;
+        }
+
+        .conf-text {
+          position: absolute;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #000;
+          font-weight: 500;
+        }
+
         /* Mobile */
 
-        @media (max-width: 640px) {
+        @media (max-width: 800px) {
           .mobile-logo {
             display: block;
           }
@@ -203,7 +259,8 @@ function Navbar() {
           }
 
           nav .links .logo,
-          nav .links .learn {
+          nav .links .learn,
+          nav .links .conf {
             display: none;
           }
 
@@ -223,8 +280,13 @@ function Navbar() {
             margin-bottom: 0.5rem;
           }
 
+          .mobile-top-right {
+            display: flex;
+            align-items: center;
+          }
+
           .learn {
-            margin-left: 0.5rem;
+            margin-right: 0.5rem;
           }
         }
 

@@ -16,9 +16,9 @@ export default function Intro() {
           </h1>
           <h3 className="description">
             Next.js gives you the best developer experience with all the features you need for
-            production: <br className="description-br" />
+            production: <br />
             hybrid static & server rendering, TypeScript support, smart bundling, route
-            pre-fetching, and more. <br className="description-br" />
+            pre-fetching, and more. <br />
             No config needed.
           </h3>
           <div className="main-button">
@@ -68,7 +68,7 @@ export default function Intro() {
           margin: 0 0 40px;
         }
 
-        .description-br {
+        .description br {
           display: none;
         }
 
@@ -118,7 +118,6 @@ export default function Intro() {
           .title {
             font-size: 100px;
             line-height: 1;
-            letter-spacing: -0.08em;
           }
 
           .description {
@@ -126,7 +125,7 @@ export default function Intro() {
           }
 
           .intro-container {
-            padding: 140px 0 30px;
+            padding: 120px 0 30px;
           }
         }
 
