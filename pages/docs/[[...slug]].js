@@ -181,6 +181,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  console.log(params);
   const { tag, slug } = getSlug(params);
   const currentTag = await getCurrentTag(tag);
   const manifest = await fetchDocsManifest(currentTag).catch(error => {

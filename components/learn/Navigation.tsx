@@ -10,14 +10,18 @@ import Profile from './Profile';
 import CheckIcon from '../icons/check';
 import ArrowIcon from '../icons/arrow-right';
 
+type StepType = { id: string; name: string; points: number };
+type LessonType = { id: string; name: string; steps: Array<StepType> };
+type CourseType = { id: string; name: string; lessons: Array<LessonType> };
+type MetaType = { title: string; stepId: string; lessonId: string; courseId: string };
+
 const Step: React.FC<{
   href: string;
-  children: [];
   selected: boolean;
   finished: boolean;
   title: string;
   label: string;
-  checkMark: React.ReactNode;
+  checkMark?: React.ReactNode;
 }> = ({ href, children, selected, finished, title, label, checkMark }) => {
   const finishedClassName = checkMark ? 'check-mark' : 'blue-dot';
 
@@ -89,10 +93,10 @@ const Step: React.FC<{
 };
 
 const Lesson: React.FC<{
-  course: object;
-  lesson: object;
+  course: CourseType;
+  lesson: LessonType;
   selected: boolean;
-  meta: object;
+  meta: MetaType;
 }> = ({ course, lesson, selected, meta }) => {
   const getRecord = useGetRecord();
   const href = `/learn/${course.id}/${lesson.id}`;
@@ -107,7 +111,7 @@ const Lesson: React.FC<{
   );
   const totalSteps = steps.length;
 
-  const finished = totalSteps && finishedSteps.length === totalSteps;
+  const finished = !!(totalSteps && finishedSteps.length === totalSteps);
 
   return (
     <Step
@@ -144,7 +148,7 @@ const Lesson: React.FC<{
   );
 };
 
-const Course: React.FC<{ course: object; meta: object }> = ({ course, meta }) => (
+const Course: React.FC<{ course: CourseType; meta: MetaType }> = ({ course, meta }) => (
   <div className="course" key={course.id}>
     <h3 className="f6 fw6">{course.name}</h3>
     <ul>
@@ -189,7 +193,7 @@ const Course: React.FC<{ course: object; meta: object }> = ({ course, meta }) =>
   </div>
 );
 
-const Navigation: React.FC<{ meta: object; isMobile: boolean }> = ({ meta, isMobile }) => {
+const Navigation: React.FC<{ meta: MetaType; isMobile: boolean }> = ({ meta, isMobile }) => {
   const [dropdown, setDropdown] = React.useState(false);
   const [record, dispatchRecord] = useRecord(meta);
   const effectDeps = [record.ready, !record.visited];

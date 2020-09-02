@@ -3,6 +3,7 @@ import Router from 'next/router';
 import Head from 'next/head';
 
 function clearRoute() {
+  console.log('clearRoute is running');
   Router.router.push('/showcase');
 }
 
