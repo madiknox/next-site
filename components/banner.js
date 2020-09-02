@@ -1,4 +1,4 @@
-import Logo from './icons/platform-logotype-white';
+import Logo from './icons/platform-logotype';
 import { PLATFORM_URL } from '../lib/constants';
 
 const Banner = () => {
@@ -6,12 +6,12 @@ const Banner = () => {
     <div className="banner">
       <div className="inner">
         <a
-          href={`${PLATFORM_URL}?utm_source=next-site&utm_medium=banner&utm_campaign=next-website`}
+          href={`${PLATFORM_URL}/home?utm_source=next-site&utm_medium=banner&utm_campaign=next-website`}
           target="_blank"
           rel="noopener noreferrer"
           title="Go to the Vercel website"
         >
-          <Logo />
+          <Logo color="#fff" />
         </a>
 
         <a

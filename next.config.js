@@ -3,6 +3,7 @@ const rehypePrism = require('@mapbox/rehype-prism');
 const nextMDX = require('@next/mdx');
 const bundleAnalyzer = require('@next/bundle-analyzer');
 const rehypeReadme = require('./lib/rehype-readme');
+const constantsJson = require('./lib/constants-json.json');
 
 // only enable rehypeReadme for this file
 // because the github relative path replacement
@@ -112,11 +113,22 @@ const excelLessonsRedirect = [].concat(
 const nextConfig = {
   target: 'experimental-serverless-trace', // Not required for Vercel, but used by GitHub Actions
   pageExtensions: ['jsx', 'js', 'ts', 'tsx', 'mdx'],
+  headers() {
+    return [
+      { source: '/', headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }] },
+      { source: '/:path*', headers: [{ key: 'Cache-Control', value: 'no-store, must-revalidate' }] }
+    ];
+  },
   rewrites() {
     return [
       {
         source: '/feed.xml',
         destination: '/_next/static/feed.xml'
+      },
+      // Must use a proxy URL to enable downloading
+      {
+        source: '/conf/download-ticket/:path{/}?',
+        destination: `${constantsJson.TICKET_IMAGE_URL}/Nextjs-Conf-Ticket.png?username=:path`
       }
     ];
   },
@@ -165,6 +177,11 @@ const nextConfig = {
       {
         source: '/discussions',
         destination: 'https://github.com/vercel/next.js/discussions',
+        permanent: false
+      },
+      {
+        source: '/conf/tickets',
+        destination: '/conf',
         permanent: false
       }
     ];

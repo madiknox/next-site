@@ -31,6 +31,7 @@
     "@next/bundle-analyzer": "9.1.4",
     "@next/mdx": "8.1.0",
     "@reach/skip-nav": "0.1.2",
+    "@zeit/fetch": "6.0.0",
     "algoliasearch": "4.3.1",
     "body-scroll-lock": "2.6.4",
     "classnames": "^2.2.6",
@@ -42,7 +43,8 @@
     "intersection-observer": "^0.5.0",
     "md5": "2.2.1",
     "mdast-util-to-string": "1.0.7",
-    "next": "9.5.3-canary.0",
+    "next": "9.5.3-canary.27",
+    "node-fetch": "2.6.0",
     "nprogress": "0.2.0",
     "polished": "^2.0.3",
     "prop-types": "15.7.2",
@@ -57,13 +59,17 @@
     "rehype-stringify": "6.0.0",
     "remark-parse": "7.0.1",
     "remark-rehype": "5.0.0",
+    "smoothscroll-polyfill": "0.4.4",
     "twemoji": "13.0.0",
     "unified": "8.4.1",
-    "unist-util-visit": "2.0.0"
+    "unist-util-visit": "2.0.0",
+    "vanilla-tilt": "1.7.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.10",
     "@types/node": "13.13.5",
+    "@types/node-fetch": "2.5.7",
+    "@types/reach__skip-nav": "0.1.0",
     "@types/react": "16.9.34",
     "@types/styled-jsx": "2.2.8",
     "@typescript-eslint/eslint-plugin": "2.31.0",
@@ -79,12 +85,15 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "4.0.0",
     "husky": "4.2.5",
+    "postcss-flexbugs-fixes": "4.2.1",
+    "postcss-hover-media-feature": "0.3.1",
+    "postcss-preset-env": "6.7.0",
     "prettier": "^2.0.5",
     "pretty-quick": "2.0.1",
     "rss": "1.2.2",
     "typescript": "3.8.3"
   },
   "resolutions": {
-    "webpack": "^5.0.0-beta.25"
+    "webpack": "^5.0.0-beta.29"
   }
 }

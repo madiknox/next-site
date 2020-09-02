@@ -1,10 +1,17 @@
 import PageContainer from './page-container';
 import Header from './header';
 
-export default function Page({ title, description, sticky, children }) {
+export default function Page({
+  title,
+  description = undefined,
+  sticky = undefined,
+  children,
+  hideHeader,
+  hideHeaderBorder = false
+}) {
   return (
     <PageContainer title={title} description={description}>
-      <Header sticky={sticky} />
+      {!hideHeader && <Header sticky={sticky} hideHeaderBorder={hideHeaderBorder} />}
       {children}
     </PageContainer>
   );

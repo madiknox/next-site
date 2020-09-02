@@ -6,7 +6,9 @@ import { PLATFORM_URL } from '../../../lib/constants';
 export default function Logos() {
   return (
     <div>
-      <Link href={`${PLATFORM_URL}?utm_source=next-site&utm_medium=logo&utm_campaign=case-studies`}>
+      <Link
+        href={`${PLATFORM_URL}/home?utm_source=next-site&utm_medium=logo&utm_campaign=case-studies`}
+      >
         <a className="home" title="Go to the Vercel website">
           <Logo />
         </a>
