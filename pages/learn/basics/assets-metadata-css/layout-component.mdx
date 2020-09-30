@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Assets, Metadata, and CSS',
@@ -105,5 +106,15 @@ This is what [CSS Modules](/docs/basic-features/built-in-css-support#adding-comp
 Furthermore, Next.js’s code splitting feature works on [CSS Modules](/docs/basic-features/built-in-css-support#adding-component-level-css) as well. It ensures the minimal amount of CSS is loaded for each page. This results in smaller bundle sizes.
 
 [CSS Modules](/docs/basic-features/built-in-css-support#adding-component-level-css) are extracted from the JavaScript bundles at build time and generate `.css` files that are loaded automatically by Next.js.
+
+<AnswerBox
+  meta={meta}
+  answers={['CSS Modules', 'Sass', 'styled-jsx', 'styled-components']}
+  correctAnswer="styled-components"
+>
+
+**Quick Review**: Which of the following styling methods does Next.js **not** have built-in support for?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

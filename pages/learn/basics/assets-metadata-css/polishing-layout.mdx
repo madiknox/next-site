@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Assets, Metadata, and CSS',
@@ -234,5 +235,18 @@ Then replace `[Your Self Introduction]` with your self introduction. Here’s an
 That’s it! We now have the polished layout code in place to move onto our data fetching lessons.
 
 Before we wrap up this lesson, let’s talk about some helpful techniques related to Next.js’s CSS support on the next page.
+
+<AnswerBox
+  meta={meta}
+  answers={[
+      'They automatically fix any cross-browser issues',
+      'They scope styles at the component level'
+    ]}
+  correctAnswer="They scope styles at the component level"
+>
+
+**Quick Review**: Why are CSS Modules useful?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

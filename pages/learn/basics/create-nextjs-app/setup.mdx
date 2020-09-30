@@ -1,15 +1,12 @@
 import Layout from '../../../../components/learn/Layout'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Create a Next.js App',
   courseId: 'basics',
   lessonId: 'create-nextjs-app',
   stepId: 'setup',
-  subtitle: 'Setup',
-  question: {
-    answers: ['Welcome to Next.js!', 'Hello Next.js!'],
-    correctAnswer: 'Welcome to Next.js!'
-  }
+  subtitle: 'Setup'
 }
 
 First, let’s make sure that your development environment is ready.
@@ -49,6 +46,14 @@ This starts your Next.js app’s "development server" (more on this later) on po
 
 Let’s check to see if it’s working. Open [http://localhost:3000](http://localhost:3000) from your browser.
 
-**Question**: What text do you see on the page?
+<AnswerBox
+  meta={meta}
+  answers={['Welcome to Next.js!', 'Hello Next.js!']}
+  correctAnswer="Welcome to Next.js!"
+>
+
+**Quick Review**: What text do you see on the page?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

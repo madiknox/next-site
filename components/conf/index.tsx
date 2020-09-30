@@ -27,7 +27,7 @@ export default function Conf({
       }}
     >
       <Layout
-        inner={pageState !== 'registration' || !!sharePage}
+        skipHeaderFooterAnimation={pageState !== 'registration' || !!sharePage}
         confLogoLink={!sharePage && pageState === 'ticket' ? '/' : undefined}
       >
         {pageState === 'registration' && !sharePage ? (

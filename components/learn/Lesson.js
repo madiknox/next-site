@@ -2,7 +2,6 @@ import React from 'react';
 import { useRecord, useGetRecord } from '../../lib/learn/records';
 import courses from '../../lib/learn/courses';
 import StepBar from './StepBar';
-import AnswerBox from './AnswerBox';
 import StepNav from './StepNav';
 
 const Lesson = ({ meta, children }) => {
@@ -41,14 +40,6 @@ const Lesson = ({ meta, children }) => {
       <h2 className="f1">{meta.title}</h2>
       {steps && <StepBar meta={meta} steps={steps} />}
       <div className="content">{children}</div>
-      {meta.question && (
-        <AnswerBox
-          record={record}
-          dispatchRecord={dispatchRecord}
-          answers={meta.question.answers}
-          correctAnswer={meta.question.correctAnswer}
-        />
-      )}
       {steps && (
         <div className="lesson-step-nav">
           <StepNav meta={meta} steps={steps} nextLessonId={nextLessonId} />

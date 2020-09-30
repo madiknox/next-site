@@ -37,6 +37,7 @@ export default function RainbowButton({ idPrefix = '' }) {
       <style jsx>{`
         .rainbow-button {
           transition: opacity 0.2s ease;
+          shape-rendering: inherit;
         }
 
         .rainbow-button:hover {

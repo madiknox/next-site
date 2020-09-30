@@ -68,15 +68,6 @@ To convert the blog app we created in the basics lessons into TypeScript, update
 - `pages/_app.js`: Update to `_app.tsx` using [this code](https://github.com/vercel/next-learn-starter/blob/master/typescript-final/pages/_app.tsx)
 - `pages/api/hello.js`: Update to `hello.ts` using [this code](https://github.com/vercel/next-learn-starter/blob/master/typescript-final/pages/api/hello.ts)
 
-Also, since `remark-html` doesn’t have type definitions within the package or in [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped), create a top-level `global.d.ts` file to add a type declaration.
-
-```ts
-declare module 'remark-html' {
-  const html: any
-  export default html
-}
-```
-
 That’s it! Your app is now powered by TypeScript.
 
 > To learn more about using Next.js in TypeScript, take a look at [our TypeScript documentation](/docs/basic-features/typescript).

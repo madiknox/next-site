@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { API_URL } from '@lib/constants';
 import useConfData from '@lib/hooks/useConfData';
 import { useRouter } from 'next/router';
+import FormError from '@lib/form-error';
 import LoadingDots from './loading-dots';
 import styleUtils from './utils.module.css';
 import styles from './form.module.css';
@@ -13,12 +14,6 @@ type Props = {
   sharePage?: boolean;
 };
 
-class FormError extends Error {
-  constructor(public res: Response) {
-    super();
-  }
-}
-
 export default function Form({ sharePage }: Props) {
   const [email, setEmail] = useState('');
   const [errorMsg, setErrorMsg] = useState('');
@@ -27,6 +22,26 @@ export default function Form({ sharePage }: Props) {
   const [formState, setFormState] = useState<FormState>('default');
   const { setPageState, setUserData } = useConfData();
   const router = useRouter();
+
+  useEffect(() => {
+    if ('URLSearchParams' in window) {
+      const { search, pathname } = window.location;
+      const params = new URLSearchParams(search);
+      const email = params.get('email');
+      if (email) {
+        setEmail(email);
+        params.delete('email');
+        const newSearch = params.toString();
+        const newAsPath = pathname + (newSearch ? `?${newSearch}` : '');
+        const newPathname = router.pathname + (newSearch ? `?${newSearch}` : '');
+        history.replaceState(
+          { url: newPathname, as: newAsPath, options: { shallow: true } },
+          '',
+          newAsPath
+        );
+      }
+    }
+  }, [router]);
 
   return formState === 'error' ? (
     <div

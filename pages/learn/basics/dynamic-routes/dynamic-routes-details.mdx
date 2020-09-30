@@ -1,4 +1,5 @@
 import Layout from '../../../../components/learn/Layout'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Dynamic Routes',
@@ -109,5 +110,19 @@ We have created several examples to illustrate [`getStaticProps`](/docs/basic-fe
 ### That’s it!
 
 In the next lesson, we’ll talk about [API Routes](/docs/api-routes/introduction) in Next.js.
+
+<AnswerBox
+  meta={meta}
+  answers={[
+    'Use `getStaticProps` to fetch a specific post given an ID and `getStaticPaths` to fetch all possible blog posts.',
+    'Use `getStaticProps` to fetch all possible blog posts and `getStaticPaths` to fetch a specific post given an ID.'
+  ]}
+  correctAnswer="Use `getStaticProps` to fetch a specific post given an ID and `getStaticPaths` to fetch all possible blog posts."
+>
+
+**Quick Review**: You want to add blog post categories as a new dynamic route
+`pages/categories/[id].js`. What is the correct way to implement this?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Pre-rendering and Data Fetching',
@@ -11,7 +12,7 @@ export const meta = {
 
 Before we talk about [data fetching](/docs/basic-features/data-fetching), let’s talk about one of the most important concepts in Next.js: [**Pre-rendering**](/docs/basic-features/pages#pre-rendering).
 
-By default, Next.js pre-renders every page. This means that Next.js _generates HTML for each page in advance_, instead of having it all done by client-side JavaScript. Pre-rendering can result in better performance and SEO.
+By default, Next.js pre-renders every page. This means that Next.js _generates HTML for each page in advance_, instead of having it all done by client-side JavaScript. Pre-rendering can result in better performance and [SEO](https://en.wikipedia.org/wiki/Search_engine_optimization).
 
 Each generated HTML is associated with minimal JavaScript code necessary for that page. When a page is loaded by the browser, its JavaScript code runs and makes the page fully interactive. (This process is called **hydration**.)
 
@@ -54,5 +55,19 @@ Here’s a quick graphical summary:
 />
 
 Next, let’s talk about **two forms** of pre-rendering in Next.js.
+
+<AnswerBox
+  meta={meta}
+  answers={[
+      'Improved SEO',
+      'Allows your application to work without JavaScript',
+      'Allows your application to only run server-side'
+    ]}
+  correctAnswer="Allows your application to only run server-side"
+>
+
+**Quick Review**: Which of the following is **not** a benefit of pre-rendering?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

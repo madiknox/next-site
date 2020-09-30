@@ -1,4 +1,5 @@
 import Layout from '../../../../components/learn/Layout'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'API Routes',
@@ -39,6 +40,21 @@ API Routes can be dynamic, just like regular pages. Take a look at our [Dynamic 
 
 ### That’s It!
 
-In the next and the final basics lesson, we’ll talk about how to deploy your Next.js app to production.
+In the next and final basic lesson, we’ll talk about how to deploy your Next.js app to production.
+
+<AnswerBox
+  meta={meta}
+  answers={[
+      'Saving incoming data to your database',
+      'Securely communicating with a third-party API',
+      'Previewing draft content from your CMS',
+      'All of the above'
+    ]}
+  correctAnswer="All of the above"
+>
+
+**Quick Review**: Which of the following is a good use case for an API Route?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

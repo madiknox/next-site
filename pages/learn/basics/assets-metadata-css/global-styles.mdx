@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Assets, Metadata, and CSS',
@@ -95,9 +96,14 @@ Now, if you access [http://localhost:3000/posts/first-post](http://localhost:300
 
 > **If it didn’t work**: Make sure you restart the development server when you add `pages/_app.js`.
 
-To summarize what we’ve learned so far:
+<AnswerBox
+  meta={meta}
+  answers={['Inside any file', 'Only inside pages/_app.js']}
+  correctAnswer="Only inside pages/_app.js"
+>
 
-- To use CSS Modules, import a CSS file named [`*.module.css`](/docs/basic-features/built-in-css-support#adding-component-level-css) in any component.
-- To use global CSS, import a CSS file in [`pages/_app.js`](/docs/advanced-features/custom-app).
+**Quick Review**: Where can you import global CSS files?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

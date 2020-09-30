@@ -1,6 +1,7 @@
 import { PureComponent } from 'react';
 import Router from 'next/router';
 import Head from 'next/head';
+import getOriginUrl from '../../lib/get-origin-url';
 
 function clearRoute() {
   Router.router.push('/showcase');
@@ -68,7 +69,7 @@ export default class extends PureComponent {
             <div className="info">
               <h3 className="f4">{siteData.title}</h3>
               <a href={siteData.link} className="f5" rel="noopener noreferrer" target="_blank">
-                {siteData.link}
+                {getOriginUrl(siteData.link)}
               </a>
             </div>
           </div>

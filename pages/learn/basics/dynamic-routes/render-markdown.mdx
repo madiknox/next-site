@@ -47,7 +47,7 @@ export async function getPostData(id) {
 }
 ```
 
-**Important**: We added the **`async`** keyword to `getPostData` because we need to use `await` for `remark`.
+> **Important**: We added the **`async`** keyword to `getPostData` because we need to use `await` for `remark`. `async`/`await` allow you to fetch data [asynchronously](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function).
 
 That means we need to update [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) in `pages/posts/[id].js` to use `await` when calling `getPostData`:
 
@@ -59,7 +59,7 @@ export async function getStaticProps({ params }) {
 }
 ```
 
-Finally, update the `Post` component to render `contentHtml` using `dangerouslySetInnerHTML`:
+Finally, update the `Post` component to render `contentHtml` using [`dangerouslySetInnerHTML`](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml):
 
 ```jsx
 export default function Post({ postData }) {

@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Pre-rendering and Data Fetching',
@@ -66,5 +67,19 @@ In that case, you can use [**Server-side Rendering**](/docs/basic-features/pages
 ### We’ll Focus on Static Generation
 
 In this lesson, we’ll focus on [Static Generation](/docs/basic-features/pages#static-generation-recommended). On the next page, we’ll talk about [Static Generation](/docs/basic-features/pages#static-generation-recommended) **with and without data**.
+
+<AnswerBox
+  meta={meta}
+  answers={[
+      'When you have thousands of pages',
+      'When the data needs to be up-to-date with every request',
+      'When you are building a page specific to a user'
+    ]}
+  correctAnswer="When the data needs to be up-to-date with every request"
+>
+
+**Quick Review**: When would you use **Server-side rendering?**
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

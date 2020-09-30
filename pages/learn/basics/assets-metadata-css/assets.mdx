@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Assets, Metadata, and CSS',
@@ -22,5 +23,15 @@ If you open `pages/index.js` in your application and take a look at the `<footer
 The logo image exists inside the `public` directory at the top level of your application.
 
 The `public` directory is also useful for `robots.txt`, Google Site Verification, and any other static assets. Check out the documentation for [Static File Serving](/docs/basic-features/static-file-serving) to learn more.
+
+<AnswerBox
+  meta={meta}
+  answers={['/images/me.jpg', 'public/images/me.jpg', 'assets/images/me.jpg']}
+  correctAnswer="public/images/me.jpg"
+>
+
+**Quick Review**: If you wanted to add a new asset `/images/me.jpg`, what would the complete file path be?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

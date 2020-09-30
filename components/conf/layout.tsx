@@ -1,12 +1,13 @@
 import cn from 'classnames';
 import VercelLogo from '@components/icons/platform-logotype';
 import { useEffect } from 'react';
+import { guidelinesUrl, codeOfConductUrl, confEmail } from '@lib/conf';
 import styles from './layout.module.css';
 import styleUtils from './utils.module.css';
 import ConfLogo from './conf-logo';
 
 type Props = {
-  inner: boolean;
+  skipHeaderFooterAnimation: boolean;
   children: React.ReactNode;
   confLogoLink?: string;
 };
@@ -35,7 +36,7 @@ function HostedByVercel({ linkEnabled }: { linkEnabled: boolean }) {
   );
 }
 
-export default function Layout({ children, inner, confLogoLink }: Props) {
+export default function Layout({ children, skipHeaderFooterAnimation, confLogoLink }: Props) {
   useEffect(() => {
     document.documentElement.style.background = '#000';
     document.body.style.background = '#000';
@@ -50,8 +51,8 @@ export default function Layout({ children, inner, confLogoLink }: Props) {
       <div className={styles.page}>
         <header
           className={cn(styles.header, {
-            [styleUtils.appear]: !inner,
-            [styleUtils['appear-first']]: !inner
+            [styleUtils.appear]: !skipHeaderFooterAnimation,
+            [styleUtils['appear-first']]: !skipHeaderFooterAnimation
           })}
         >
           <div className={styles['header-logos']}>
@@ -65,8 +66,8 @@ export default function Layout({ children, inner, confLogoLink }: Props) {
           </div>
           <div
             className={cn(styles['header-right'], {
-              [styleUtils.appear]: !inner,
-              [styleUtils['appear-second']]: !inner
+              [styleUtils.appear]: !skipHeaderFooterAnimation,
+              [styleUtils['appear-second']]: !skipHeaderFooterAnimation
             })}
           >
             <HostedByVercel linkEnabled={linkEnabled} />
@@ -78,8 +79,8 @@ export default function Layout({ children, inner, confLogoLink }: Props) {
 
         <footer
           className={cn(styles.footer, {
-            [styleUtils.appear]: !inner,
-            [styleUtils['appear-sixth']]: !inner
+            [styleUtils.appear]: !skipHeaderFooterAnimation,
+            [styleUtils['appear-sixth']]: !skipHeaderFooterAnimation
           })}
         >
           <div className={styles['footer-legal']}>
@@ -106,7 +107,7 @@ export default function Layout({ children, inner, confLogoLink }: Props) {
             <div className={styles['footer-separator']} />
             <p className={styles['footer-paragraph']}>
               <a
-                href="https://www.notion.so/vercel/Next-js-Conf-Code-of-Conduct-2dae92927656409db28aaf2a62d99c41"
+                href={codeOfConductUrl}
                 className={styles['footer-link']}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -123,6 +124,28 @@ export default function Layout({ children, inner, confLogoLink }: Props) {
                 rel="noopener noreferrer"
               >
                 Privacy Policy
+              </a>
+            </p>
+            <div className={styles['footer-separator']} />
+            <p className={styles['footer-paragraph']}>
+              <a
+                href={guidelinesUrl}
+                className={styles['footer-link']}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Proposal Guidelines
+              </a>
+            </p>
+            <div className={styles['footer-separator']} />
+            <p className={styles['footer-paragraph']}>
+              <a
+                href={`mailto:${confEmail}`}
+                className={styles['footer-link']}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {confEmail}
               </a>
             </p>
           </div>

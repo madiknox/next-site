@@ -90,7 +90,7 @@ function Navbar() {
 
           <a
             className="mute"
-            href="https://vercel.com/solutions/nextjs?utm_source=next-site&utm_medium=navbar&utm_campaign=next-website"
+            href="https://vercel.com/contact/sales?utm_source=next-site&utm_medium=navbar&utm_campaign=next-website"
             target="_blank"
             rel="noopener noreferrer"
           >

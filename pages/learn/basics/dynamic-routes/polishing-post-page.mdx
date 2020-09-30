@@ -30,7 +30,7 @@ export default function Post({ postData }) {
 
 ### Formatting the Date
 
-To format the date, we’ll use the `date-fns` library. First, install it:
+To format the date, we’ll use the [`date-fns`](https://date-fns.org/) library. First, install it:
 
 ```shell
 npm install date-fns
@@ -46,6 +46,8 @@ export default function Date({ dateString }) {
   return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>
 }
 ```
+
+> **Note**: You can view the different `format()` string options [here](https://date-fns.org/v2.16.1/docs/format).
 
 And use it in `pages/posts/[id].js`:
 

@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Navigate Between Pages',
@@ -50,5 +51,15 @@ Simply create a JS file under the [`pages` directory](/docs/basic-features/pages
 In a way, this is similar to building websites using HTML or PHP files. Instead of writing HTML you write JSX and use React Components.
 
 Let's add a link to the newly added page so that we can navigate to it from the homepage.
+
+<AnswerBox
+  meta={meta}
+  answers={['authors/me.js', 'pages/authors/me.js', 'routes/authors/me.js']}
+  correctAnswer="pages/authors/me.js"
+>
+
+**Quick Review**: If you wanted to add a new route `/authors/me`, what would the file name be (including the directory)?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

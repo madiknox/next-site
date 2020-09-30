@@ -1,6 +1,7 @@
 import { PureComponent } from 'react';
 import Router, { withRouter } from 'next/router';
 import IObserver from '../intersection-observer';
+import getOriginUrl from '../../lib/get-origin-url';
 
 const GAP_X = 48;
 const GAP_Y = 48;
@@ -55,7 +56,7 @@ export default withRouter(
                       rel="noopener noreferrer"
                       target="_blank"
                     >
-                      {siteData.link}
+                      {getOriginUrl(siteData.link)}
                     </a>
                   </div>
                 </div>

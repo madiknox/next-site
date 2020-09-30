@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Navigate Between Pages',
@@ -53,5 +54,18 @@ You can learn more about the `Link` component [in the API reference for `next/li
 > **Note:** If you need to link to an <em>external</em> page outside the Next.js app, just use an `<a>` tag without `Link`.
 >
 > If you need to add attributes like, for example, `className`, add it to the `a` tag, _not_ to the `Link` tag. [Here’s an example](https://github.com/vercel/next-learn-starter/blob/master/snippets/link-classname-example.js).
+
+<AnswerBox
+  meta={meta}
+  answers={[
+      'Only the JavaScript for /posts/first-post is loaded.',
+      'JavaScript for the entire application is loaded.'
+    ]}
+  correctAnswer="Only the JavaScript for /posts/first-post is loaded."
+>
+
+**Quick Review**: A user opens their browser and navigates to `your-blog.com/posts/first-post`. What JavaScript is initially loaded for this page?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

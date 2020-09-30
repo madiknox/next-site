@@ -128,6 +128,10 @@ export default class FooterFeedback extends Component {
 
   onEmojiSelect = emoji => {
     this.setState({ emoji, focused: true });
+
+    if (this.state.focused) {
+      this.state.inputFocused.focus();
+    }
   };
 
   handleChange = e => {
@@ -151,6 +155,12 @@ export default class FooterFeedback extends Component {
       this.setState({
         inputFocused: inputRef
       });
+    }
+  };
+
+  handleAnimationEnd = () => {
+    if (this.state.focused) {
+      this.state.inputFocused.scrollIntoView({ block: 'center', behavior: 'smooth' });
     }
   };
 
@@ -239,7 +249,6 @@ export default class FooterFeedback extends Component {
 
     return (
       <div className="feedback">
-        <h5>Was this helpful?</h5>
         <ClickOutside
           active={focused}
           onClick={this.handleClickOutside}
@@ -260,6 +269,7 @@ export default class FooterFeedback extends Component {
               )}
               {...props}
             >
+              <h5>Was this helpful?</h5>
               <span className="emojis">
                 <EmojiSelector
                   onSelect={this.onEmojiSelect}
@@ -267,7 +277,7 @@ export default class FooterFeedback extends Component {
                   current={this.state.emoji}
                 />
               </span>
-              <div className="textarea-wrapper">
+              <div className="textarea-wrapper" onAnimationEnd={this.handleAnimationEnd}>
                 <div className="input">
                   <label>Email</label>
                   <Input
@@ -374,7 +384,7 @@ export default class FooterFeedback extends Component {
               text-rendering: optimizeLegibility;
               -webkit-font-smoothing: antialiased;
               max-width: 86vw;
-              width: 408px;
+              width: 100%;
             }
 
             .textarea-wrapper {
@@ -384,6 +394,8 @@ export default class FooterFeedback extends Component {
               padding: var(--geist-gap-half);
               height: 0px;
               width: 100%;
+              max-width: 408px;
+              margin: 0 auto;
               opacity: 0;
               line-height: 24px;
               font-size: 16px;
@@ -444,6 +456,8 @@ export default class FooterFeedback extends Component {
             .geist-feedback-input.focused .textarea-wrapper {
               display: block;
               width: 100%;
+              max-width: 408px;
+              margin: 0 auto;
               padding-bottom: 40px;
               border-radius: 4px;
               overflow: hidden;

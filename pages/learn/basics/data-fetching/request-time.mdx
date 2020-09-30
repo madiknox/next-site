@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Pre-rendering and Data Fetching',
@@ -38,7 +39,7 @@ export async function getServerSideProps(context) {
 
 Because [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) is called at request time, its parameter (`context`) contains request specific parameters.
 
-You should use [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) only if you need to pre-render a page whose data must be fetched at request time. Time to first byte (TTFB) will be slower than [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration.
+You should use [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) only if you need to pre-render a page whose data must be fetched at request time. Time to first byte ([TTFB](https://web.dev/time-to-first-byte/)) will be slower than [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) because the server must compute the result on every request, and the result cannot be cached by a [CDN](https://vercel.com/docs/edge-network/overview) without extra configuration.
 
 ### Client-side Rendering
 
@@ -81,5 +82,19 @@ Check out the [SWR documentation](https://swr.vercel.app/) to learn more.
 In the next lesson, we’ll create pages for each blog post using [**dynamic routes**](/docs/routing/dynamic-routes).
 
 > Again, you can get in-depth information about [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) and [`getServerSideProps`](/docs/basic-features/data-fetching#getserversideprops-server-side-rendering) in the [Data Fetching documentation](/docs/basic-features/data-fetching).
+
+<AnswerBox
+  meta={meta}
+  answers={[
+      `When you can pre-render the data ahead of a user's request`,
+      'When you need to fetch data at request time instead of build time',
+      'Private, user-specific pages where SEO is not relevant'
+    ]}
+  correctAnswer="Private, user-specific pages where SEO is not relevant"
+>
+
+**Quick Review**: When should you use **Client-side rendering?**
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

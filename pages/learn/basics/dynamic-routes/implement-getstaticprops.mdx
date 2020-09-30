@@ -1,5 +1,6 @@
 import Layout from '../../../../components/learn/Layout'
 import Image from '../../../../components/image'
+import AnswerBox from '../../../../components/learn/AnswerBox'
 
 export const meta = {
   title: 'Dynamic Routes',
@@ -111,6 +112,19 @@ Again, here’s the graphical summary of what we’ve done:
   height={1054 / 2}
 />
 
-But we still haven’t displayed the blog **markdown content**. So let’s do this next.
+We still haven’t displayed the blog **markdown content**. Let’s do this next.
+
+<AnswerBox
+  meta={meta}
+  answers={[
+      'The front matter of the Markdown file',
+      'The value from the file name'
+    ]}
+  correctAnswer="The value from the file name"
+>
+
+**Quick Review**: How does `params.id` from `getStaticProps({ params })` know the key is named `id`?
+
+</AnswerBox>
 
 export default ({ children }) => <Layout meta={meta}>{children}</Layout>

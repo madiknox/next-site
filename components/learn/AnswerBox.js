@@ -2,12 +2,17 @@ import React from 'react';
 import CrossIcon from '../icons/cross';
 import CheckIcon from '../icons/check';
 import Button from './button';
+import { useRecord } from '../../lib/learn/records';
 
 const Area = props => (
   <div>
     {props.children}
     <style jsx>{`
       div {
+        background: #fafafa;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        padding: 0 16px 16px 16px;
         margin-top: 2rem;
         margin-bottom: 4rem;
         counter-reset: answer-list;
@@ -58,6 +63,7 @@ const Answer = ({ value, onChange, selected, readOnly, children }) => (
         padding: 0.5rem 1rem;
         border-radius: 7px;
         border: 1px solid #666;
+        background: white;
         transition: box-shadow 0.2s ease;
       }
 
@@ -127,47 +133,52 @@ const AnswerResultMessage = ({ answer, correctAnswer }) => (
   </>
 );
 
-const AnswerBox = ({ answers, correctAnswer, record, dispatchRecord }) => (
-  <Area>
-    {answers.map(answer => (
-      <Answer
-        key={answer}
-        value={answer}
-        selected={answer === record.answer}
-        onChange={e => dispatchRecord({ type: 'answer', answer: e.target.value })}
-        readOnly={record.submitted}
-      >
-        {answer}{' '}
-        {record.submitted && (
-          <Symbol correct={answer === correctAnswer} selected={answer === record.answer} />
-        )}
-      </Answer>
-    ))}
-    <div>
-      {record.submitted ? (
-        <AnswerResultMessage answer={record.answer} correctAnswer={correctAnswer} />
-      ) : (
-        <Button
-          onClick={() => {
-            dispatchRecord({ type: 'submit' });
-            if (record.answer === correctAnswer) {
-              dispatchRecord({ type: 'check' });
-            }
-          }}
-          color="#252525"
-          shadowColor="rgba(0, 0, 0, 0.2)"
-          invert
+const AnswerBox = ({ meta, answers, correctAnswer, children }) => {
+  const [record, dispatchRecord] = useRecord(meta);
+
+  return (
+    <Area>
+      {children}
+      {answers.map(answer => (
+        <Answer
+          key={answer}
+          value={answer}
+          selected={answer === record.answer}
+          onChange={e => dispatchRecord({ type: 'answer', answer: e.target.value })}
+          readOnly={record.submitted}
         >
-          Submit
-        </Button>
-      )}
-      <style jsx>{`
-        div {
-          margin: 2rem 0 4rem;
-        }
-      `}</style>
-    </div>
-  </Area>
-);
+          {answer}{' '}
+          {record.submitted && (
+            <Symbol correct={answer === correctAnswer} selected={answer === record.answer} />
+          )}
+        </Answer>
+      ))}
+      <div>
+        {record.submitted ? (
+          <AnswerResultMessage answer={record.answer} correctAnswer={correctAnswer} />
+        ) : (
+          <Button
+            onClick={() => {
+              dispatchRecord({ type: 'submit' });
+              if (record.answer === correctAnswer) {
+                dispatchRecord({ type: 'check' });
+              }
+            }}
+            color="#252525"
+            shadowColor="rgba(0, 0, 0, 0.2)"
+            invert
+          >
+            Submit
+          </Button>
+        )}
+        <style jsx>{`
+          div {
+            margin-top: 2rem;
+          }
+        `}</style>
+      </div>
+    </Area>
+  );
+};
 
 export default AnswerBox;
