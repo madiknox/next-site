@@ -10,17 +10,15 @@ export const meta = {
   subtitle: 'Layout Component'
 }
 
-First, Let’s create a **Layout** component which will be common across all pages.
+First, Let’s create a **Layout** component which will be shared across all pages.
 
 - Create a top-level directory called `components`.
 - Inside, create a file called `layout.js` with the following content:
 
 ```jsx
-function Layout({ children }) {
+export default function Layout({ children }) {
   return <div>{children}</div>
 }
-
-export default Layout
 ```
 
 Then, in `pages/posts/first-post.js`, import `Layout` and make it the outermost component.
@@ -63,11 +61,10 @@ Create a file called `layout.module.css` in the `components` directory with the 
 
 > **Important:** To use [CSS Modules](/docs/basic-features/built-in-css-support#adding-component-level-css), the CSS file name must end with `.module.css`.
 
-To use this in `Layout`, you need to:
+To use this `container` class inside `layout.js`, you need to:
 
-- Import it as `styles`
-- Use `styles.<class-name>` as `className`
-- In this case, the class name is `container`, so we’ll use `styles.container`
+- Import the file as `styles`
+- Use `styles.container` as the `className`
 
 ```jsx
 import styles from './layout.module.css'

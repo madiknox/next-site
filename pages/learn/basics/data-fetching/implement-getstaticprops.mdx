@@ -58,13 +58,13 @@ export function getSortedPostsData() {
 }
 ```
 
-And in `pages/index.js`, import this function:
+Now, let's import `getSortedPostsData` inside `pages/index.js`:
 
 ```js
 import { getSortedPostsData } from '../lib/posts'
 ```
 
-Then call this function in [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation). You need to return the result inside the `props` key:
+Then, add [`getStaticProps`](/docs/basic-features/data-fetching#getstaticprops-static-generation) to `pages/index.js` and call `getSortedPostsData` inside.
 
 ```js
 export async function getStaticProps() {
@@ -77,7 +77,7 @@ export async function getStaticProps() {
 }
 ```
 
-Once this is set up, the `allPostsData` prop will be passed to the `Home` component. To see this, modify the component definition to take `{ allPostsData }`:
+By returning `allPostsData` inside the `props` object, the blog posts will be passed to the `Home` component. To see this, modify the component definition to take `{ allPostsData }`:
 
 ```jsx
 export default function Home ({ allPostsData }) { ... }

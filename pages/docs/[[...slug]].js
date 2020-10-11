@@ -96,6 +96,9 @@ const Docs = ({ routes, route: _route, data, html }) => {
 
   const title = route && `${data.title || route.title} | Next.js`;
   const { tag } = getSlug(query);
+  const image = asPath.startsWith('/docs/migrating')
+    ? 'https://og-image.now.sh/Migrating%20to%20**Next.js**.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-white-logo.svg'
+    : '/static/twitter-cards/documentation.png';
 
   return (
     <FeedbackContext.Provider value={{ label: 'next-docs' }}>
@@ -141,7 +144,7 @@ const Docs = ({ routes, route: _route, data, html }) => {
             <SocialMeta
               title={title}
               url={`${SITE_URL}${asPath}`}
-              image="/static/twitter-cards/documentation.png"
+              image={image}
               description={data.description}
             />
           </PageContent>
